@@ -7,7 +7,6 @@ const ccLogo = document.querySelector(".cc-logo span:nth-child(2) img")
 
 function setCardType(type) {
   const colors = {
-    default: ["black", "gray"],
     visa: ["#436D99", "#2D57F2"],
     mastercard: ["#DF6F29", "#C69347"],
     diners: ["#7f8fa6", "#40739e"],
@@ -17,7 +16,8 @@ function setCardType(type) {
     hipercard: ["#822124", "#A1585B"],
     discover: ["#00A4E0", "#EF4123"],
     jcb: ["#00823f", "#bb1933"],
-    unionpay: ["red", "red"]
+    unionpay: ["red", "red"],
+    default: ["black", "gray"]
   }
 
   ccBgColor01.setAttribute("fill", colors[type][0])
@@ -56,10 +56,6 @@ const expirationDateMasked = IMask(expirationDate, expirationDatePattern)
 const cardNumber = document.querySelector("#card-number")
 const cardNumberPattern = {
   mask: [
-    {
-      mask: "0000 0000 0000 0000",
-      cardtype: "default"
-    },
     {
       mask: "0000 0000 0000 0000",
       regex: /^4\d{0,15}/,
@@ -110,6 +106,10 @@ const cardNumberPattern = {
       mask: "0000 0000 0000 0000",
       regex: /^62\d{0,14}/,
       cardtype: "unionpay"
+    },
+    {
+      mask: "0000 0000 0000 0000",
+      cardtype: "default"
     }
   ],
   dispatch: function (appended, dynamicMasked) {
