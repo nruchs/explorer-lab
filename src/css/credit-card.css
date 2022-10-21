@@ -69,3 +69,9 @@
   inset: 0;
   z-index: 0;
 }
+
+.cc-changed {
+  background-color: #c97272;
+  background-image: none;
+  border-radius: 20px;
+}

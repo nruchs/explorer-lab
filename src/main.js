@@ -4,25 +4,28 @@ import IMask from "imask"
 const ccBgColor01 = document.querySelector(".cc-bg svg > g g:nth-child(1) path")
 const ccBgColor02 = document.querySelector(".cc-bg svg > g g:nth-child(2) path")
 const ccLogo = document.querySelector(".cc-logo span:nth-child(2) img")
+const ccBg = document.querySelector(".cc")
 
 function setCardType(type) {
   const colors = {
-    visa: ["#436D99", "#2D57F2"],
-    mastercard: ["#DF6F29", "#C69347"],
-    diners: ["#7f8fa6", "#40739e"],
-    amex: ["#192a56", "#7f8fa6"],
-    maestro: ["#273c75", "#e84118"],
-    cielo: ["#A99E46", "#D32E48"],
-    hipercard: ["#822124", "#A1585B"],
-    discover: ["#00A4E0", "#EF4123"],
-    jcb: ["#00823f", "#bb1933"],
-    unionpay: ["red", "red"],
+    visa: ["#436D99", "#2D57F2", "#07051B"],
+    mastercard: ["#DF6F29", "#C69347", "#A70A5F"],
+    diners: ["#7f8fa6", "#40739e", "#5D11FF"],
+    amex: ["#2DD348", "#FFCB11", "#7f8fa6"],
+    maestro: ["#273c75", "#e84118", "#222222"],
+    cielo: ["#A99E46", "#D32E48", "#4756A7"],
+    hipercard: ["#822124", "#A1585B", "#FF560E"],
+    discover: ["#00A4E0", "#EF4123", "#16962A"],
+    jcb: ["#00823f", "#bb1933", "#965B16"],
+    unionpay: ["#FFFFFF", "#980A0A", "#048069"],
     default: ["black", "gray"]
   }
 
   ccBgColor01.setAttribute("fill", colors[type][0])
   ccBgColor02.setAttribute("fill", colors[type][1])
   ccLogo.setAttribute("src", `cc-${type}.svg`)
+  ccBg.style.backgroundColor = colors[type][2]
+  ccBg.style.borderRadius = "20px"
 }
 
 globalThis.setCardType = setCardType
