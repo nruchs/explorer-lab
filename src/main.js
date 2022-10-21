@@ -30,14 +30,12 @@ function setCardType(type) {
 
 globalThis.setCardType = setCardType
 
-// security code
 const securityCode = document.querySelector("#security-code")
 const securityCodePattern = {
   mask: "0000"
 }
 const securityCodeMasked = IMask(securityCode, securityCodePattern)
 
-// expiration date
 const expirationDate = document.querySelector("#expiration-date")
 const expirationDatePattern = {
   mask: "MM{/}YY",
@@ -130,7 +128,20 @@ const cardNumberMasked = IMask(cardNumber, cardNumberPattern)
 
 const addButton = document.querySelector("#add-card")
 addButton.addEventListener("click", () => {
-  alert("Cartão adicionado!")
+  if (
+    (cardNumberMasked.value === "") |
+    (securityCodeMasked.value === "") |
+    (expirationDateMasked.value === "") |
+    (cardHolder.value === "")
+  ) {
+    alert("Preencha todos os dados do cartão.")
+  } else {
+    alert("Cartão adicionado com sucesso!")
+    cardNumberMasked.value = ""
+    securityCodeMasked.value = ""
+    expirationDateMasked.value = ""
+    cardHolder.value = ""
+  }
 })
 
 document.querySelector("form").addEventListener("submit", event => {
